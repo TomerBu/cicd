@@ -26,6 +26,7 @@ pipeline {
                     . venv/bin/activate
                     python -m arts iTomerS
                     '''
+                echo 'Testing completed'
             }
         }
 
