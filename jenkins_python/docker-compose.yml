@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  jenkins-python-firefox-chromium-selenium:
+    image: jenkins/jenkins:lts
+    ports:
+      - "9090:8080"
+    volumes:
+      - jenkins_data:/var/jenkins_home
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        CHROME_BIN: /usr/bin/chromium
+        FIREFOX_BIN: /usr/bin/firefox
+
+volumes:
+  jenkins_data:
+
+
+# docker-compose up --build

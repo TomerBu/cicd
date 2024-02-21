@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                git url: 'https://github.com/TomerBu/cicd.git', branch: 'main'
+                sh '''
+                  python3 -m venv venv
+                  . venv/bin/activate
+                   if [ -f requirements.txt ]; then
+                         pip install -r requirements.txt
+                   fi
+                '''
+                echo 'Build completed'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                sh '''
+                    . venv/bin/activate
+                    python -m arts iTomerS
+                    '''
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+            }
+        }
+    }
+}
