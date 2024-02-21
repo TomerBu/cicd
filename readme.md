@@ -17,7 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 1. Clone the repository
   > Copy and paste the following commands in your terminal
   ```bash
-  git clone https://github.com/yourusername/your-repo.git
+  git clone https://github.com/tomerbu/cicd.git
   ```
 
 2. Install Python dependencies
