@@ -7,6 +7,7 @@ pipeline {
                 echo 'Building...'
                 git url: 'https://github.com/TomerBu/cicd.git', branch: 'main'
                 sh '''
+                  cd python_demo
                   python3 -m venv venv
                   . venv/bin/activate
                    if [ -f requirements.txt ]; then
@@ -21,6 +22,7 @@ pipeline {
             steps {
                 echo 'Testing...'
                 sh '''
+                    cd python_demo
                     . venv/bin/activate
                     python -m arts iTomerS
                     '''
