@@ -11,11 +11,16 @@ RUN apt-get update && \
 RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
-# Install Firefox, Chromium, and Google Chrome
+# Install Firefox, Chromium
 RUN apt-get install -y firefox-esr chromium
+
+# Add Google Chrome
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
     apt install -y ./google-chrome-stable_current_amd64.deb && \
     rm ./google-chrome-stable_current_amd64.deb
+
+# Add Google Chrome to the PATH
+ENV PATH="/usr/bin/google-chrome:$PATH"
 
 # Add Microsoft's repository for Edge
 RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add - && \

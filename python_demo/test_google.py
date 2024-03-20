@@ -1,4 +1,6 @@
   # selenium 4
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.service import Service as ChromiumService
@@ -8,7 +10,9 @@ from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.core.os_manager import ChromeType
 
 def chrome():
-  driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+  options = ChromeOptions()
+  options.add_argument('--headless')
+  driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options )
   return driver
 
 def firefox():
@@ -16,11 +20,10 @@ def firefox():
   return driver 
 
 def chromium():
-  driver = webdriver.Chrome(service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
+  options = ChromeOptions()
+  options.add_argument('--headless')
+  driver = webdriver.Chrome(service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()), options=options)
   return driver
-
-
-
 
 import time
 
