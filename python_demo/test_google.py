@@ -12,7 +12,7 @@ from webdriver_manager.core.os_manager import ChromeType
 def chrome():
   options = ChromeOptions()
   options.add_argument('--headless')
-  driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options )
+  driver = webdriver.Chrome(options=options )
   return driver
 
 def firefox():
