@@ -1,0 +1,4 @@
+#git ignore  .pytest_chache folder in all directories and subdirectories
+
+
+.pytest_chache
