@@ -1,18 +1,29 @@
 FROM jenkins/jenkins:lts
 
-# switch to root user to install packages
+# Switch to root user to install packages
 USER root
 
-# Install Python, pip, and virtualenv
+# Install necessary utilities
 RUN apt-get update && \
-    apt-get install -y python3 python3-pip python3-venv
+    apt-get install -y python3 python3-pip python3-venv wget gnupg2 software-properties-common
 
 # Create a virtual environment and activate it
 RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
-# Install Firefox and Chromium
+# Install Firefox, Chromium, and Google Chrome
 RUN apt-get install -y firefox-esr chromium
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+    apt install -y ./google-chrome-stable_current_amd64.deb && \
+    rm ./google-chrome-stable_current_amd64.deb
+
+# Add Microsoft's repository for Edge
+RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add - && \
+    add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" && \
+    apt-get update
+
+# Install Microsoft Edge
+RUN apt-get install -y microsoft-edge-stable
 
 # Install Selenium using pip in the virtual environment
 RUN pip3 install selenium

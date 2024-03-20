@@ -17,4 +17,5 @@ volumes:
   jenkins_data:
 
 
-# docker-compose up --build
+# docker-compose up --build -d
+# --build is used to build the image again if the Dockerfile is changed
