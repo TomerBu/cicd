@@ -15,9 +15,21 @@ ENV PATH="/opt/venv/bin:$PATH"
 RUN apt-get install -y firefox-esr chromium
 
 # Add Google Chrome
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    apt install -y ./google-chrome-stable_current_amd64.deb && \
-    rm ./google-chrome-stable_current_amd64.deb
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+RUN apt-get update
+RUN apt --fix-broken install
+RUN apt-get install google-chrome-stable -y
+
+
+# Install the Chrome WebDriver
+# Install ChromeDriver.
+RUN wget --no-check-certificate -N https://storage.googleapis.com/chrome-for-testing-public/123.0.6312.58/linux64/chromedriver-linux64.zip -P ~/ && \
+    unzip ~/chromedriver-linux64.zip -d ~/ && \
+    rm ~/chromedriver-linux64.zip && \
+    mv -f ~/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver && \
+    chown root:root /usr/local/bin/chromedriver && \
+    chmod 0755 /usr/local/bin/chromedriver
 
 # Add Google Chrome to the PATH
 ENV PATH="/usr/bin/google-chrome:$PATH"
