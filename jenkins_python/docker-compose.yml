@@ -19,3 +19,21 @@ volumes:
 
 # docker-compose up --build -d
 # --build is used to build the image again if the Dockerfile is changed
+
+
+# docker ps
+# docker stop <container_id>
+# docker rm <container_id>
+# docker volume ls
+# docker volume rm jenkins_jenkins_data
+# docker-compose up --build 
+
+#
+# echo the current time to a file:
+# date > time.txt
+
+# echo $(date)  # prints the current date and time
+# we need the brackets otherwise it will print the string "date"
+
+
+
