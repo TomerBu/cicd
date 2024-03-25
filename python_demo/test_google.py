@@ -29,7 +29,7 @@ import time
 
 
 def test_title():
-  driver = chrome()
+  driver = chromium()
   driver.get("http://www.google.com")
   assert driver.title == "Google"
   time.sleep(5)
