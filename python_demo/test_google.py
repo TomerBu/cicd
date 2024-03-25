@@ -2,19 +2,26 @@ import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+``
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 def test_title():
   options = Options()
-  # options.binary_location = "/usr/bin/chromium"
-  options.add_argument("--headless")
+  options.add_argument('--headless')
+  options.add_argument('--no-sandbox')
+  options.add_argument('--disable-dev-shm-usage')
+  driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
-  s = Service("/usr/local/bin/chromedriver")
-
-  driver = webdriver.Chrome(service=s, options=options)
-  driver.get("http://www.google.com")
-  assert driver.title == "Google"
-  time.sleep(5)
-  driver.quit()
+  driver.get("https://python.org")
+  print(driver.title)
+  driver.close()
 
 
-# docker exec -it b51d015923f2 ls /usr/local/bin/
+
+
+# docker ps
+# docker exec -it <container-id> ls /usr/local/bin/
