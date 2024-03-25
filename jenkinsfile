@@ -24,7 +24,7 @@ pipeline {
                 sh '''
                     cd python_demo
                     . venv/bin/activate
-                    python -m arts iTomerS
+                    pytest
                     '''
                 echo 'Test completed'
             }
