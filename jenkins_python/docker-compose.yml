@@ -35,7 +35,5 @@ volumes:
 # echo $(date)  # prints the current date and time
 # we need the brackets otherwise it will print the string "date"
 
-# 
-
 
 
