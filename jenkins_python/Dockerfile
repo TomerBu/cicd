@@ -25,7 +25,7 @@ RUN apt-get install google-chrome-stable -y
 # Install the Chrome WebDriver
 # Install ChromeDriver.
 RUN wget --no-check-certificate -N https://storage.googleapis.com/chrome-for-testing-public/123.0.6312.58/linux64/chromedriver-linux64.zip -P ~/ && \
-    unzip ~/chromedriver-linux64.zip -d ~/ && \
+    unzip -o ~/chromedriver-linux64.zip -d ~/ && \
     rm ~/chromedriver-linux64.zip && \
     mv -f ~/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver && \
     chown root:root /usr/local/bin/chromedriver && \

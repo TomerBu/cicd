@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 
 def test_title():
   options = Options()
-  options.binary_location = "/usr/bin/chromium"
+  # options.binary_location = "/usr/bin/chromium"
   options.add_argument("--headless")
 
   s = Service("/usr/local/bin/chromedriver")
@@ -15,3 +15,6 @@ def test_title():
   assert driver.title == "Google"
   time.sleep(5)
   driver.quit()
+
+
+# docker exec -it b51d015923f2 ls /usr/local/bin/
