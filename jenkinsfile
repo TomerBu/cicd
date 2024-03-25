@@ -37,3 +37,9 @@ pipeline {
         }
     }
 }
+
+// remote contains work i dont have locally and i want to take it to my local without loosing my work
+// git fetch origin
+// git merge origin/main
+// git pull origin main
+// git pull origin main --rebase
