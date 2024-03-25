@@ -1,4 +1,4 @@
-# Project Title: Jenkins for Testing Web Apps!
+# Project Title: Jenkins for Testing Web Apps
 
 This project focuses on using Jenkins, a popular open-source automation server, to test web applications. We use Python and Selenium for writing and executing test cases.
 
